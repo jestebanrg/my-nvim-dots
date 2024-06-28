@@ -48,7 +48,7 @@ return {
   {
     "voldikss/vim-floaterm",
   },
-
+  {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}},
   {
     "jose-elias-alvarez/typescript.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
