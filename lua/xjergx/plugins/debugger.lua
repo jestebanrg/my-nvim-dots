@@ -1,0 +1,35 @@
+return {}
+-- return {
+-- 				{
+-- 					"rcarriga/nvim-dap-ui",
+-- 								event = "VeryLazy",
+-- 								dependencies = {
+-- 									"mfussenegger/nvim-dap",
+-- 								},
+-- 								config = function()
+-- 									local dap = require("dap")
+-- 												local dapui = require("dapui")
+-- 												require("dapui").setup()
+-- 												dap.listeners.after.event_initialized["dapui_config"] = function()
+-- 													dapui.open()
+-- 												end
+-- 												dap.listeners.before.event_terminated["dapui_config"] = function()
+-- 													dapui.close()
+-- 												end
+-- 												dap.listeners.before.event_exited["dapui_config"] = function()
+-- 													dapui.close()
+-- 												end
+-- 								end,
+-- 				},
+-- 	{
+-- 		"mfussenegger/nvim-dap",
+-- 		dependencies = {
+-- 			"nvim-telescope/telescope-dap.nvim",
+-- 			"theHamsta/nvim-dap-virtual-text",
+-- 			"rcarriga/nvim-dap-ui",
+-- 		},
+-- 		config = function()
+-- 			require("xjergx.config.dap")
+-- 		end,
+-- 	},
+-- }
