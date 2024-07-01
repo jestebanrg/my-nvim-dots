@@ -69,4 +69,15 @@ return {
     event = "InsertEnter",
     config = true,
   },
+
+  -- surround
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup()
+      vim.keymap.set("n", "S", require("nvim-surround").surround)
+    end,
+  },
 }
