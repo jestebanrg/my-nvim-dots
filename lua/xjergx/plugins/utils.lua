@@ -7,8 +7,8 @@ return {
     "utilyre/barbecue.nvim",
     name = "barbecue",
     dependencies = {
-      "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons",
+      "SmiteshP/nvim-navic",
     },
     config = function()
       require("barbecue").setup({
@@ -77,7 +77,11 @@ return {
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup()
-      vim.keymap.set("n", "S", require("nvim-surround").surround)
+      
+      vim.keymap.set("n", "gs", "<Plug>Ysurround", { desc = "surround" })
+      vim.keymap.set("n", "gS", "<Plug>Yssurround", { desc = "surround" })
+      vim.keymap.set("n", "gss", "<Plug>Yssurround", { desc = "surround" })
+
     end,
   },
 }

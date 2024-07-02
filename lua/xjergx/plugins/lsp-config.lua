@@ -17,6 +17,8 @@ return {
           "prettier",
           "volar",
           "csharp-lsp",
+          "omnisharp-mono",
+          "omnisharp"
         },
       })
     end,
@@ -34,6 +36,8 @@ return {
         "jsonls",
         "vuels",
         "volar",
+        "omnisharp",
+        "omnisharp_mono",
       },
     },
   },
@@ -46,7 +50,31 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.tsserver.setup({
         capabilities = capabilities,
-      })
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionCallParameterTypeHints = true,
+            }
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayEnumMemberValueHints = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayFunctionCallParameterTypeHints = true,
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayVariableTypeHints = true,
+            }
+          }
+        }
+             })
       lspconfig.html.setup({
         capabilities = capabilities,
       })
@@ -56,6 +84,26 @@ return {
       lspconfig.volar.setup({
         capabilities = capabilities,
         filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+      })
+
+      lspconfig.omnisharp_mono.setup({
+        capabilities = capabilities,
+        settings = {
+            InlayHintsOptions = {
+              EnableForParameters = true,
+              ForLiteralParameters = true,
+              ForIndexerParameters = true,
+              ForObjectCreationParameters = true,
+              ForOtherParameters = true,
+              SuppressForParametersThatDifferOnlyBySuffix = false,
+              SuppressForParametersThatMatchMethodIntent = false,
+              SuppressForParametersThatMatchArgumentName = false,
+              EnableForTypes = true,
+              ForImplicitVariableTypes = true,
+              ForLambdaParameterTypes = true,
+              ForImplicitObjectCreatio = true,
+            },
+        },
       })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover" })

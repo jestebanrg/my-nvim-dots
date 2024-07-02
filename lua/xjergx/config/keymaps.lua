@@ -29,11 +29,18 @@ keymap("n", "<leader>bp", "<CMD>bp<CR>", { desc = "Previous Buffer" })
 keymap("n", "<leader>bl", "<CMD>ls<CR>", { desc = "List Buffers" })
 
 -- Dap
-keymap("n", "<leader>db", "<CMD>DapToggleBreakpoint<CR>", { desc = "Toggle Breakpoint" })
-keymap("n", "<leader>dc", "<CMD>DapContinue<CR>", { desc = "Continue" })
-keymap("n", "<leader>do", "<CMD>DapStepOver<CR>", { desc = "Step Over" })
-keymap("n", "<leader>di", "<CMD>DapStepInto<CR>", { desc = "Step Into" })
-keymap("n", "<leader>dO", "<CMD>DapStepOut<CR>", { desc = "Step Out" })
+vim.api.nvim_set_keymap('n', '<F5>', ':lua require\'dap\'.continue()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F10>', ':lua require\'dap\'.step_over()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F11>', ':lua require\'dap\'.step_into()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F12>', ':lua require\'dap\'.step_out()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>b', ':lua require\'dap\'.toggle_breakpoint()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>B', ':lua require\'dap\'.set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', { noremap = true, silent = true })
+
+-- keymap("n", "<leader>b", "<CMD>DapToggleBreakpoint<CR>", { desc = "Toggle Breakpoint" })
+-- keymap("n", "<leader>dc", "<CMD>DapContinue<CR>", { desc = "Continue" })
+-- keymap("n", "<leader>do", "<CMD>DapStepOver<CR>", { desc = "Step Over" })
+-- keymap("n", "<leader>di", "<CMD>DapStepInto<CR>", { desc = "Step Into" })
+-- keymap("n", "<leader>dO", "<CMD>DapStepOut<CR>", { desc = "Step Out" })
 
 keymap("n", "<leader>ih", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
