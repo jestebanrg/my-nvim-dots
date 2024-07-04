@@ -8,6 +8,8 @@ return {
 				null_ls.builtins.diagnostics.eslint_d,
 				null_ls.builtins.completion.spell,
 				null_ls.builtins.formatting.prettier,
+        -- formatter for nuxt2
+        null_ls.builtins.formatting.nuxt2
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format buffer" })
